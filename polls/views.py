@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from polls.models import Poll
 
 
@@ -8,7 +9,8 @@ def index(request):
 
 
 def detail(request, poll_id):
-  return HttpResponse("You're looking at poll %s." % poll_id)
+  p = get_object_or_404(Poll, pk=poll_id)
+  return render_to_response('polls/detail.html', {'poll': p})
 
 
 def results(request, poll_id):
