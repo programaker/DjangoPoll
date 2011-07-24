@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 
 class Poll(models.Model):
